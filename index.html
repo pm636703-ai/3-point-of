@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>3point_traders</title>
 
-<link href="vendor/external_0.css" rel="stylesheet">
-
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -17,11 +15,11 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '947311354802643');
+fbq('init', '2967617086762174');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=947311354802643&ev=PageView&noscript=1"
+src="https://www.facebook.com/tr?id=2967617086762174&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 
@@ -170,11 +168,8 @@ h1{
     justify-content:center;
     gap:10px;
     padding:18px;
-
-    /* Center alignment */
-    width:-18px;
+    width:100%;
     margin:20px auto;
-
     border-radius:50px;
     text-decoration:none;
     color:#fff;
@@ -184,6 +179,8 @@ h1{
     background-size:300% 300%;
     animation:gradientMove 5s linear infinite, pulse 2s infinite;
     box-shadow:0 15px 40px rgba(0,229,255,0.25);
+    border:none;
+    cursor:pointer;
 }
 
 .cta-btn img{
@@ -279,6 +276,7 @@ h1{
     box-shadow:0 0 30px rgba(34,158,217,0.6);
     animation:bounce 2s infinite;
     z-index:999;
+    text-decoration:none;
 }
 
 .float-btn img{
@@ -327,11 +325,11 @@ h1{
             </div>
         </div>
 
-        <!-- Telegram Button -->
-        <a href="https://t.me/+RH6AA-qxteZiYmI1" target="_blank" class="cta-btn">
+        <!-- Telegram Button (अब button है, a नहीं) -->
+        <button class="cta-btn" id="telegramJoinBtn">
             <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
             Join Telegram Now
-        </a>
+        </button>
 
         <!-- 4 Bottom Glass Cards -->
         <div class="benefits">
@@ -379,9 +377,39 @@ h1{
 </div>
 
 <!-- Floating Telegram Button -->
-<a href="https://t.me/+RH6AA-qxteZiYmI1" target="_blank" class="float-btn">
+<a href="#" id="floatTelegramBtn" class="float-btn">
     <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
 </a>
+
+<!-- SIRF YAHI PAR SCRIPT ADD HUA HAI - Button Click Tracking -->
+<script>
+// Telegram join click track karne ka function
+function trackAndRedirect() {
+    // Facebook Pixel se Lead event track karo
+    if (typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+            content_name: 'Telegram_Join_Button',
+            content_category: 'Community_Join'
+        });
+    }
+    // Thoda delay karke Telegram par bhejo
+    setTimeout(function() {
+        window.open('https://t.me/+RH6AA-qxteZiYmI1', '_blank');
+    }, 100);
+}
+
+// Main button par click listener
+document.getElementById('telegramJoinBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    trackAndRedirect();
+});
+
+// Floating button par click listener
+document.getElementById('floatTelegramBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    trackAndRedirect();
+});
+</script>
 
 </body>
 </html>
